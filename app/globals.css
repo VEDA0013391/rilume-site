@@ -9,3 +9,28 @@ body {
   background: #f4fbff;
   color: #1e293b;
 }
+
+@keyframes revealHide {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.title-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: revealHide 800ms cubic-bezier(.2,.8,.2,1) forwards;
+}

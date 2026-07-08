@@ -1,6 +1,8 @@
 import { siteConfig } from "@/app/lib/site";
 
 export default function Home() {
+  const titleChars = siteConfig.name.split("");
+  
   return (
     <main className="min-h-[calc(100vh-64px)] bg-gradient-to-b from-sky-50 via-cyan-50 to-white">
 
@@ -13,7 +15,17 @@ export default function Home() {
         />
 
         <h1 className="mb-5 text-6xl font-black text-sky-700">
-          {siteConfig.name}
+          {titleChars.map((char, index) => (
+            <span
+              key={index}
+              className="title-char"
+              style={{
+                animationDelay: `${index * 120}ms`,
+              }}
+            >
+              {char}
+            </span>
+          ))}
         </h1>
 
         <p className="max-w-xl text-lg leading-8 text-slate-600">
