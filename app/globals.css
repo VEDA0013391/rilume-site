@@ -36,6 +36,46 @@ body {
   animation: revealHide 800ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
+.icon-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.icon-ring::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    #38bdf8,
+    #22d3ee,
+    #60a5fa,
+    #38bdf8
+  );
+  animation: rotateRing 4s linear infinite;
+}
+
+.icon-ring img {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  object-fit: cover;
+  border-radius: 9999px;
+  background: white;
+}
+
+@keyframes rotateRing {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* ブルブルアニメーション */
 @keyframes errorShake {
   0% {

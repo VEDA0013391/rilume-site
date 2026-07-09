@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-  FaDiscord,
-  FaGithub,
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaDiscord, FaGithub, FaTwitter } from "react-icons/fa6";
 import { siteConfig } from "@/app/lib/site";
 
 export default function Footer() {
@@ -18,7 +14,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaXTwitter size={24} />
+              <FaTwitter size={24} />
             </a>
 
             <a

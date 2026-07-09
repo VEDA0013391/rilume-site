@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import { siteConfig } from "@/app/lib/site";
 
 const links = [
   { href: "/", label: "ホーム" },
+  { href: "/about", label: "基本情報" },
   { href: "/commands", label: "コマンド" },
   { href: "/status", label: "稼働状況" },
   { href: "/support", label: "サポート" },
@@ -17,39 +19,40 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-sky-100 bg-white/80 backdrop-blur">
-
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
 
-      <Link
-        href="/"
-        className="
-          flex
-          items-center
-          gap-3
-          text-2xl
-          font-bold
-          text-sky-600
-          transition
-          hover:scale-105
-          whitespace-nowrap
-        "
-      >
-        <img
-          src="/icon.png"
-          alt={siteConfig.name}
+        <Link
+          href="/"
           className="
-            h-10
-            w-10
-            rounded-full
-            border-2
-            border-sky-200
+            flex
+            items-center
+            gap-3
+            whitespace-nowrap
+            text-2xl
+            font-bold
+            text-sky-600
+            transition
+            hover:scale-105
           "
-        />
-        {siteConfig.name}
-      </Link>
+        >
+          <Image
+            src="/icon.png"
+            alt={siteConfig.name}
+            width={40}
+            height={40}
+            priority
+            className="
+              rounded-full
+              border-2
+              border-sky-200
+            "
+          />
+
+          {siteConfig.name}
+        </Link>
 
         {/* PC用 */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -74,8 +77,7 @@ export default function Header() {
           ))}
         </nav>
 
-
-        {/* ハンバーガメニュー */}
+        {/* ハンバーガーメニュー */}
         <button
           className="
             relative
@@ -92,10 +94,12 @@ export default function Header() {
             md:hidden
           "
           onClick={() => setOpen(!open)}
+          aria-label="メニュー"
         >
           <span
             className={`
-              transition-transform duration-300
+              transition-transform
+              duration-300
               ${open ? "rotate-180 scale-90" : ""}
             `}
           >
@@ -113,12 +117,7 @@ export default function Header() {
           duration-500
           ease-in-out
           md:hidden
-
-          ${
-            open
-              ? "max-h-96 opacity-100"
-              : "max-h-0 opacity-0"
-          }
+          ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
         `}
       >
         <nav
@@ -131,7 +130,6 @@ export default function Header() {
             backdrop-blur
           "
         >
-
           {links.map((link, index) => (
             <Link
               key={link.href}
@@ -144,16 +142,12 @@ export default function Header() {
                 px-4
                 py-4
                 text-gray-700
-
                 transition-all
                 duration-500
                 ease-out
-
                 hover:bg-sky-50
                 hover:text-sky-600
-
                 last:border-b-0
-
                 ${
                   open
                     ? "translate-x-0 opacity-100"
@@ -167,10 +161,8 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-
         </nav>
       </div>
-
     </header>
   );
 }
