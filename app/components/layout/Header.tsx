@@ -8,7 +8,7 @@ import { siteConfig } from "@/app/lib/site";
 const links = [
   { href: "/", label: "ホーム" },
   { href: "/commands", label: "コマンド" },
-  { href: "/status", label: "ステータス" },
+  { href: "/status", label: "稼働状況" },
   { href: "/support", label: "サポート" },
 ];
 
