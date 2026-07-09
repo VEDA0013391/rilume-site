@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import CommandsClient from "./CommandsClient";
 
 export const metadata: Metadata = {
   title: "コマンド",
 };
 
-export default function Page() {
-  return <h1>準備中</h1>;
+export default function CommandsPage() {
+  return <CommandsClient />;
 }
