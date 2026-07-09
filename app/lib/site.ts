@@ -5,6 +5,7 @@ export const siteConfig = {
   invite_url: "https://discord.com/oauth2/authorize?client_id=1404988583626014740",
   server_url: "https://discord.gg/CytkCY2zpf",
   twitter_url: "https://x.com/ryo_001339",
-  github_url: "https://github.com/VEDA0013391",
+  github_url: "https://github.com/VEDA0013391/rilume-site",
+  github_rilume_url: "https://github.com/VEDA0013391/rilume",
   discord_url: "https://discord.com/users/1317692759448223808",
 };
