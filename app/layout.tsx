@@ -5,7 +5,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import { siteConfig } from "@/app/lib/site";
 
-const url = "https://rilume-site-next.onrender.com";
+const url = "https://rilume-site.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: `${siteConfig.description} ${siteConfig.longDescription}`,
-    images: ["/twitter.png"],
+    images: ["/og.png"],
     creator: "@ryo_001339",
   },
 
