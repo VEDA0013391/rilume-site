@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import clientPromise from "./mongodb";
 
 export interface Status {
@@ -6,17 +7,37 @@ export interface Status {
   memberCount: number;
 }
 
-export async function getLatestStatus(): Promise<Status | null> {
+async function fetchLatestStatus(): Promise<Status | null> {
   const client = await clientPromise;
-
   const db = client.db();
 
-    return await db.collection<Status>("status").findOne(
+  return db.collection<Status>("status").findOne(
     {},
     {
-        sort: {
+      sort: {
         recordedAt: -1,
-        },
+      },
     }
-    );
+  );
+}
+
+export async function getLatestStatus(): Promise<Status | null> {
+  const now = new Date();
+
+  const slot =
+    `${now.getFullYear()}-` +
+    `${now.getMonth()}-` +
+    `${now.getDate()}-` +
+    `${Math.floor(now.getHours())}-` +
+    `${now.getMinutes() < 30 ? 0 : 1}`;
+
+  const cached = unstable_cache(
+    fetchLatestStatus,
+    ["status", slot],
+    {
+      revalidate: false,
+    }
+  );
+
+  return cached();
 }
