@@ -22,7 +22,7 @@ type StatusResponse = {
 
 async function getStatus() {
   const response = await fetch(
-    "https://apis-of1s.onrender.com/rilume/status",
+    "https://apis-001339.onrender.com/rilume/status",
     {
       next: {
         revalidate: 60,
